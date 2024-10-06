@@ -1,2 +1,2 @@
-faiss-cpu
-sentence-transformers
+faiss-cpu == 1.7.2
+sentence-transformers == 3.1.1
