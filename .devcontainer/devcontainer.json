@@ -6,7 +6,8 @@
     "codespaces": {
       "openFiles": [
         "README.md",
-        "src/app.py"
+        "src/app.py",
+        "requirments.txt"
       ]
     },
     "vscode": {
