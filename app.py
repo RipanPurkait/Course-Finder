@@ -97,21 +97,23 @@ def query_courses(query_text, top_k=5, min_score=0.4):
 # Gradio interface function
 def search_courses(query):
     results = query_courses(query)
-    output = ""
+    output = "<div style='font-family: Arial, sans-serif;'>"
     for match in results:
-        output += f"Course: {match['name']}\n"
-        output += f"Link: {match['link']}\n"
-        output += f"Similarity Score: {match['score']:.4f}\n\n"
+        output += f"<h3>{match['name']}</h3>"
+        output += f"<p><strong>Link:</strong> <a href='{match['link']}' target='_blank'>{match['link']}</a></p>"
+        output += f"<p><strong>Similarity Score:</strong> {match['score']:.4f}</p>"
+        output += "<hr>"
+    output += "</div>"
     return output
 
 # Create Gradio interface
 iface = gr.Interface(
     fn=search_courses,
     inputs=gr.Textbox(lines=2, placeholder="Enter your search query..."),
-    outputs="text",
+    outputs=gr.HTML(),
     title="Course Finder",
     description="Search for courses by entering a topic or keyword.",
-    examples=[["machine learning"], ["data visualization"], ["python programming"],["generative ai"]]
+    examples=[["machine learning"], ["data visualization"], ["python programming"]]
 )
 
 # Launch the interface
